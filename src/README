@@ -1,0 +1,14 @@
+/**
+ * @author stauren@qq.com
+ * google code project double-underscore javascript lib
+ * https://double-underscore.googlecode.com/svn/trunk/
+ */
+
+File list:
+
+stauren_comment.js -- the main source file
+stauren.js         -- minified main source file
+ydescj.js          -- a combined file of YUI 2.5.2 modules : YAHOO, DOM, EVENT, SELECTOR, CONNECTION, JSON 
+yst.js             -- the combined file of stauren.js and ydescj.js, the most commonly used one, you could it by add the following tag in your HTML.
+
+<script src="http://double-underscore.googlecode.com/svn/trunk/src/yst.js"></script>

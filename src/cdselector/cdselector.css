@@ -1,0 +1,38 @@
+/*!
+ * @file cdselector.css
+ * @author <a href="mailto:stauren@qq.com">stauren</a>
+ * @revision:
+ */
+
+/* start: du-validate-category selector */
+.du-validate-category {
+  zoom:1;
+  clear:both;
+  -moz-user-select : none;
+}
+.du-validate-cateogyr:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.du-validate-category ul {
+  border:1px solid #CCCCCC;
+  background-color:#FFFFFF;
+  float:left;
+  height:230px;
+  width:200px;
+  margin:0 2px 0 0;
+  overflow:auto;
+  overflow-y:scroll;
+  padding:4px;
+}
+.du-validate-category ul li{border:1px solid #FFFFFF;color:#444444;cursor:default;height:20px;line-height:20px;list-style-type:none;margin:0pt 1px;padding:0pt;text-indent:3px;width:180px;*width:170px;}
+.du-validate-category ul li.du-validate-category-selected {color:#444;background-color:#ffdfe0;border-color:#ff8081;/*background-color:#CAFFC0;border:1px solid #0A9800;color:#006623;*/}
+.du-validate-category ul li.du-validate-category-parent {background-image:url(http://localhost/att/workspace/os/svn/trunk/src/cdselector/r-arrow.gif);background-repeat:no-repeat;background-position:98% 50% ;}
+.du-validate-category ul.du-validate-category-level0 {}
+.du-validate-category select {
+  margin-right : .5em;
+ }
+/* end: du-validate-category selector */

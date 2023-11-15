@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+body {
+  margin : 0;
+  padding : 10px;
+}
+div.c1 {
+border:1px solid #ccc;background:#F0F7F9;
+margin:40px 0 5px;
+padding:10px;
+font-family : Verdana;
+}
+div.c1 .gr {
+  color : #999;
+  font-size : 12px;
+}
+pre {
+  font-family : 'Courier New' Verdana;
+  color : #888;
+  font-size : 12px;
+}
+
+
+/*begin:attach example*/
+.smartbox-ctn div, .smartbox-ctn input{padding:0;margin:0;}
+.s_btn,.s_btnover{width:53px;height:25px;line-height:25px;border:none;cursor:pointer;background:url(http://mat1.gtimg.com/finance/stock/bigsbox/bg2.png) no-repeat;font-size:14px; font-weight:bold;}
+.s_btnover{background:url(http://mat1.gtimg.com/finance/stock/bigsbox/bg3.png) no-repeat;}
+.s_txtbor{float:left;width:233px;overflow:hidden;height:23px;}
+.s_txtbor, .s_selectbor {border:1px solid #7C8FA2;}
+.s_selectbor {background:#fff;overflow:hidden;width:53px;height:23px;}
+.s_selectbor div.in {width:51px;height:21px;border:1px solid #E4E9EF;background:#fff;overflow:hidden;position:relative;}
+.s_selectbor div div {width:51px;height:17px;padding-top:2px;overflow:hidden;position:relative;*top:1px;}
+.s_selectbor select,x:-moz-any-link,x:default{ top:0px; /* ff3 */}
+.s_selectbor select {position:relative;left:-1px;top:0px;*top:-3px;border:0;}
+@media all and (-webkit-min-device-pixel-ratio:0){
+  .s_selectbor select{top:-3px;/* Safari3.1+ */}
+}
+.smartbox-ctn .s_input{padding-left:9px;width:222px;padding-top:3px;height:18px;line-height:18px;font-size:14px;border:1px solid #E4E9EF;*margin-top:-1px;color:#B4B3B3;}
+.s_fs14{font-size:14px;}
+.s_fcbule,.s_fcbule a{color:#0058A7;}
+.s_fcbule a:hover{color:#B00;}
+.s_fntB{font-weight:bold;}
+.s_fntUL{text-decoration:underline;}
+/*end:attach example*/
+
+h4 {color:#111;}
+.tabs {background:#fff;width:212px;padding:10px;}
+.tabs .thd {position:relative;z-index:2;overflow:hidden;}
+.tabs .thd ul {padding:0;margin:0;}
+.tabs .thd li {list-style:none;padding:5px;margin:0;float:left;border:1px solid #ddd;width:55px;cursor:pointer;text-align:center;background:#eee;color:blue;text-decoration:underline;height:19px;}
+.tabs .thd li.active {cursor:default;font-weight:bold;border-bottom-color:#fff;text-decoration:none;color:black;background:#fff;}
+.tabs .tbd {clear:both;padding:10px;border:1px solid #ddd;position:relative;top:-1px;z-index:1;}
+.tabs .tbd div {display:none;height:100px;}
+.tabs .tbd div.active {display:block;}
+</style>
+</head>
+<body>
+<div style="margin:5px;">
+  <h1>history documentation</h1>
+  <div>
+    <h2>Example</h2>
+    <div class="c1" style="margin-top:10px;">
+      <div class="tabs">
+        <div class="thd">
+          <ul>
+            <li class="active">tab 0</li>
+            <li>tab 1</li>
+            <li>tab 2</li>
+          </ul>
+        </div>
+        <div class="tbd">
+          <div class="active">content 0</div>
+          <div>content 1</div>
+          <div>content 2</div>
+        </div>
+      </div>
+      <div class="gr">
+        <h4>Add an entry to history</h4>
+        <div style="padding-left:20px;">oHis.addEntry('tab', num);</div>
+      </div>
+      <div class="gr">
+        <h4>Listen to du-history:change to invoke your own function when 'back' or 'forword' is clicked</h4>
+        <div style="padding-left:20px;">__.Event.on(document, 'du-history:change', function(e) {});</div>
+      </div>
+      <div class="gr">
+        <h4>Complete source</h4>
+        <pre>
+&lt;script src="http://data.gtimg.cn/js/fn-loader.js"&gt;&lt;/script&gt; &lt;!-- loader, seed --&gt;
+&lt;script&gt;
+  __.load('history', function() { //loading the history module
+
+    var _L = __.Lang,
+      ctn = __.Dom.f('.thd'),
+      tabs = __.Dom.$('.thd li'),
+      cts = __.Dom.$('.tbd div');
+
+    var oHis, activeTab = null;
+
+    function activateTab(num) {
+      _L.e(tabs, function(o, i) {
+        if (i == num) {
+          o.className = 'active';
+          cts[i].className = 'active';
+          activeTab = i;
+        } else {
+          o.className = '';
+          cts[i].className = '';
+        }
+      })
+    }
+
+    __.Event.on(tabs, 'click', function(e) {
+      var tar = e.target, num;
+      if (tar && tar.tagName == 'LI' && tar.className == '') {
+        num = _L.find(tabs, _L.curry('===', tar));
+
+        activateTab(num);
+
+        //add entry to history when tab changes
+        oHis.addEntry('tab', num);
+      }
+    });
+
+    __.Event.on(document, 'du-history:change', function(e) {
+      var chd = e.memo.changed, newV;
+
+      if (chd.tab) {
+        newV = chd.tab.newVal;
+        if (newV != activeTab) {
+          activateTab(newV);
+        }
+      } else if (e.memo.removed.tab) {
+        activateTab(0);
+      }
+    });
+
+    //it's best to initiate after listen to the change event, or you may miss the first change event at page loading
+    oHis = new __.History();
+  });
+&lt;/script&gt;
+        </pre>
+      </div>
+    </div>
+    <h2>loader seed</h2>
+    <div class="c1" style="margin-top:10px;">
+      <div class="gr">
+        http://data.gtimg.cn/js/fn-loader.js
+      </div>
+    </div>
+    <h2>Method</h2>
+    <div class="c1" style="margin-top:10px;">
+      <div class="gr">
+        addEntry
+      </div>
+    </div>
+    <h2>Event</h2>
+    <div class="c1" style="margin-top:10px;">
+      <div class="gr">
+        du-history:change
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.tlogger ul { padding:0;margin:0;}
+.tlogger li { list-style : none; padding: 5px 0 5px 5px;margin:0;font-size:12px;}
+</style>
+<script>
+(function() {
+  var ul, el = document.createElement('div');
+  el.className = 'tlogger';
+  el.style.cssText = 'position:absolute;height:300px;width:200px;top:10px;right:10px;border:1px solid #ccc;background:#fff;overflow-y:scroll;';
+  document.body.appendChild(el);
+  ul = document.createElement('ul');
+  el.appendChild(ul);
+
+  function dolog(t) {
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(t));
+    ul.appendChild(li);
+    li = null;
+  }
+
+  window.dolog = dolog;
+});
+</script>
+<script src="http://data.gtimg.cn/js/fn-loader.js"></script>
+<script>
+(function() {
+  __.load('fn-base history', function() {
+    var _L = __.Lang,
+      ctn = __.Dom.f('.thd'), tabs = __.Dom.$('.thd li'), cts = __.Dom.$('.tbd div');
+
+    var oHis, activeTab = null;
+
+    function activateTab(num) {
+      _L.e(tabs, function(o, i) {
+        if (i == num) {
+          o.className = 'active';
+          cts[i].className = 'active';
+          activeTab = i;
+        } else {
+          o.className = '';
+          cts[i].className = '';
+        }
+      })
+    }
+
+    __.Event.on(tabs, 'click', function(e) {
+      var tar = e.target, num;
+      if (tar && tar.tagName == 'LI' && tar.className == '') {
+        num = _L.find(tabs, _L.curry('===', tar));
+
+        activateTab(num);
+        oHis.addEntry('tab', num);
+      }
+    });
+
+    __.Event.on(document, 'du-history:change', function(e) {
+      var chd = e.memo.changed, newV;
+
+      if (chd.tab) {
+        newV = chd.tab.newVal;
+        if (newV != activeTab) {
+          activateTab(newV);
+        }
+      } else if (e.memo.removed.tab) {
+        activateTab(0);
+      }
+    });
+
+    oHis = new __.History();
+  });
+}());
+</script>
+</body>
+</html>
+

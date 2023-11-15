@@ -1,0 +1,136 @@
+/*!
+ * @file validator.js
+ * @author <a href="mailto:stauren@qq.com">stauren</a>
+ * @revision:
+ */
+
+
+/* start:st-validate general */
+.st-validate dt{font-weight:bold;display:inline;float:left;margin-right:1em;text-align:right;width:13em;line-height:1.6em;clear:left;}
+.st-validate dd{margin:0.3em 0;}
+.st-validate input.st-validate-input-error,.st-validate textarea.st-validate-input-error {/*border:2px solid red;*/}
+.st-validate input.st-validate-input-in, .st-validate textarea.st-validate-input-in {color:#ccc;}
+.st-validate em.st-validate-error-notice {
+  padding:1px;
+  width:400px;
+  height : 18px;
+  line-height : 18px;
+  display:block;
+  margin-left:14em;
+  margin-top : 10px;
+}
+.st-validate em.st-validate-error-notice.active {
+  line-height : 18px;
+  height : 18px;
+  padding : 0 0 0 21px;
+  display : block;
+  width : auto;
+  /*background : #fff6ed url(http://k.kbcdn.com/global/validator/icon.gif) no-repeat 0 -39px;*/
+  background : #fff6ed url(http://localhost/att/workspace/os/svn/trunk/src/validator/icon.gif) no-repeat 0 -39px;
+  border : 1px solid #ffcb9b;
+  overflow : hidden;
+  clear : both;
+}
+.st-validate em.st-validate-error-notice.st-validate-success {
+  background : #fff6ed url(http://localhost/att/workspace/os/svn/trunk/src/validator/icon.gif) no-repeat 0 -79px;
+}
+.st-validate .st-passed em.st-validate-error-notice.active {
+  background-color : transparent;
+  background-position : 0 -79px;
+  border : 1px solid transparent;
+}
+.st-validate em.st-validate-error-notice.hide {display:none;}
+.st-validate em.st-validate-error-notice.hide.active {display:block;}
+.st-validate em.st-validate-error-notice img {float:left;margin:0px 2px 0 1px;}
+.st-validate ul.st-validate-ul li {border-bottom:1px dashed #CCC;}
+.st-validate ul.st-validate-ul li .left,
+.st-validate ul.st-validate-ul2 li .left {float:left;text-align:right;font-weight:bold;margin:1.5em 0;*padding-bottom:1.5em;/*IE bug*/}
+.st-validate ul.st-validate-ul2 li div.left {font-weight:normal;}
+.st-validate ul.st-validate-ul2 li div.left {margin-left:2em;}
+.st-validate ul.st-validate-ul li div.right,
+.st-validate ul.st-validate-ul2 li div.right {
+  float:left;
+  text-align:left;
+  padding:18px 0 18px 8px;
+}
+/* end:st-validate general */
+
+/* begin st-validate 2rd edition */
+.st-validate input,
+.st-validate label {
+  vertical-align : middle;
+  line-height : 1.2em;
+}
+.st-validate label {
+  margin : 0 1em 0 3px;
+}
+.st-validate .st-validate-bbs:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.st-validate .st-validate-bbs {
+  clear : both;
+  zoom:1;
+}
+.st-validate .st-blocked .st-validate-bbs .st-validate-error-notice {
+  display : block;
+  margin-top : 5px;
+}
+.st-validate .st-validate-bbs span {
+  display : block;
+  margin: 5px 0 0;
+  *padding-bottom : 5px;
+  line-height : 18px;
+  border : 1px solid #FFFFFF;
+}
+.st-validate .st-validate-bbs span.hide,
+.st-validate .st-blocked .st-validate-bbs span,
+.st-validate .st-validate-bbs .st-validate-error-notice {
+  height : 0px;
+  display : none;
+}
+.st-validate .st-table-default th div {
+  float : right;
+  padding-left : 29px;
+  height : 17px;
+  line-height : 17px;
+}
+.st-validate .st-passed th div {
+  /*background : transparent url(http://k.kbcdn.com/global/validator/icon.gif) no-repeat 0 -304px;*/
+}
+.st-validate .st-validate-wrapper.hide {
+  display : none;
+}
+.st-validate .st-validate-wrapper .grey-box {
+  width : 370px;
+  border : 1px solid #DDD;
+  background : #F6F6F6;
+  padding : 10px;
+}
+.st-validate .st-validate-wrapper .notice {
+  margin-top : 10px;
+}
+.st-validate .st-validate-wrapper .grey-box li{
+  padding : 0 0 5px 0;
+}
+.st-validate .st-validate-wrapper .grey-box li.last{
+  padding-bottom : 0;
+}
+.st-validate .st-validate-bbs .st-validate-error-notice {
+  height : 18px;
+  line-height : 18px;
+  padding : 0;
+  width : auto;
+  padding-left : 21px;
+  /*background : #fff6ed url(http://k.kbcdn.com/global/validator/icon.gif) no-repeat 0 -39px;*/
+  background : #fff6ed url(http://localhost/att/workspace/os/svn/trunk/src/validator/icon.gif) no-repeat 0 -39px;
+  border : 1px solid #ffcb9b;
+  clear : both;
+}
+.st-validate .st-validate-input-error {
+  border : 1px solid #ffdbcb;
+}
+/* end: st-validate 2rd edition */

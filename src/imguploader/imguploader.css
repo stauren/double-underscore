@@ -1,0 +1,62 @@
+/*!
+ * @file imguploader.css
+ * @author <a href="mailto:stauren@qq.com">stauren</a>
+ * @revision:
+ */
+
+
+/* begin:st-iu */
+.st-iu {
+}
+.st-iu-fipt-notice {
+  font-size : 12px;
+  color : #999;
+  padding-top : 3px;
+  clear : both;
+}
+.st-iu-fipt-ctn {
+  float : left;
+}
+.st-iu .st-iu-uploaded-ctn {
+  background : #ddedf3;
+  width : 540px;
+}
+.st-iu .st-iu-uploaded-ctn li {
+  width : 108px;
+}
+.st-iu .st-iu-uploaded-ctn img {
+  border : 1px solid #ccc;
+}
+.st-iu .st-iu-uploaded-ctn a {
+  font-size : 12px;
+  text-decoration : underline;
+  color : #2754bb;
+}
+.st-iu-spinningctn span {
+  font-size : 12px;
+}
+.st-iu .st-iu-uploaded-ctn li {
+  padding : 14px 0 3px;
+}
+.st-iu .st-iu-uploaded-ctn {
+  zoom : 1;
+  /*padding : 14px 10px 3px 10px;*/
+  padding : 0 10px;
+  margin : 10px 0;
+}
+.st-iu .st-iu-uploaded-ctn:after {
+  content : ".";
+  display : block;
+  height : 0;
+  clear : both;
+  visibility : hidden;
+}
+.st-iu .st-iu-uploaded-ctn li {
+  float : left;
+  text-align : center;
+}
+.st-iu .st-iu-fipt-ctn input {
+  height : 22px;
+}
+/* end:st-iu */
+
